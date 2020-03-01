@@ -17,7 +17,7 @@ Type* t;
 }
 
 %token  ARRAY
-%token  BEGIN
+%token  BEG 
 %token  CHAR
 %token  CONST
 %token  DO
@@ -72,39 +72,162 @@ Type* t;
 %token  OPEN
 %token  CLOSE
 %token  DONE
-%token  OPEN
-%token  CLOSE
-%token  EQUAL
+%token  OPENBRAC
+%token  CLOSEBRAC
+%token  ASSIGN
 
 %token  NL
 %token  CR
 
+%token Dot
 
 %type <val> INT_LITERAL
+%type <string> STRINGCONST
+%type <char> CHARACTERCONST
 %type <e> Expr
-%type <id> ID_TOKEN
+%type <id> IDENTIFIER
+%type <val> HEXADECIMAL
+%type <val> OCTAL
+%type <val> NUMBER
 %type <t> TYPE
-
 %%
+Program              : OptConstDecl OptTypeDecl OptVarDecl ProFunkDecl Block DOT {}
+		     ;
+OptConstDecl         : ConstantDecl {/*$$ ?*/ }
+	             |
+	             ;
+OptTypeDecl          : TypeDecl {/*$$ ?*/ }
+	             |
+	             ;
+OptVarDecl           : VarDecl {/*$$ ?*/ }
+	             |
+	             ;
+ProFunkDecl          : ProFunkDec ProcDecl {}
+	             | ProFunkDec FuncDecl {}
+	             ;
+ConstantDecl         : CONST IdentExpr DONE 
+	             ;
+IdentExpr            : IDENTIFIER EQUAL Expression
+	             ;
+ProcDecl             : PROCEDURE IDENTIFIER OPEN FormalParameters CLOSE Type DONE FORWARD DONE 
+	             | PROCEDURE IDENTIFIER OPEN FormalParameters CLOSE Type DONE Body DONE 
+	             ;
+FuncDecl             : FUNCTION IDENTIFIER OPEN FormalParameters CLOSE Type DONE FORWARD DONE
+	             | FUNCTION IDENTIFIER OPEN FormalParameters CLOSE Type DONE Body DONE
+	             ;
+FormalParameters     : %empty {}
+		     | VAR IdentList DONE type {}
+		     | REF IdentList DONE type {}
+		     | FormalParameters DONE VAR IdentList DONE type {}
+		     | FormalParameters DONE REF IdentList DONE type {}
+		     ;
+Body                 : OptConstantDecl OptTypeDecl OptVarDecl Block
+                     ;
+Block                : BEG StatementSequence END
+                     ;
+TypeDecl             : TYPE IDENTIFIER EQUAL Type DONE TypeDecl 
+	             | IDENTIFIER EQUAL Type DONE TypeDecl 
+	             |
+	             ;
+Type                 : SimpleType { $$ = $1; }
+                     | RecordType { $$ = $1; }
+                     | ArrayType  { $$ = $1; }
+                     ;
+SimpleType           : IDENTIFIER { $$ = $1 }
+		     ;
+RecordType           : RECORD IdentList Type DONE RecordType END
+		     |
+		     ;
+ArrayType            : ARRAY OPENBRAC Expression SUCHTHAT Expression CLOSEBRAC OF Type DONE
+		     ;
+IdentList            : IDENTIFIER COM IdentList
+		     | IDENTIFIER {}
+		     ;
+VarDecl              : VAR IdentList SUCHTHAT Type DONE VarDecl 
+		     |
+		     ;
+StatementSequence    : Statement DONE StatementSequence 
+		     |
+		     ;
+Statement            : AssignmentStatement {}
+		     | IfStatement {}
+		     | WhileStatement {}
+		     | RepeatStement {}
+		     | ForStatement {}
+		     | StopStatement {}
+		     | ReturnStatement {}
+		     | ReadStatement {}
+		     | WriteStatement {}
+		     | ProcedureCall {}
+		     | NullStatement {}
+		     ;
+AssignmentStatement  : Lvalue ASSIGN Expression {}
+		     ;
+IfStatement          : IF Expression THEN StatementSequence IfStatement END 
+		     | ELSEIF Expression THEN StatementSequence IfStatment 
+		     | ELSE Expression THEN StatementSequence 
+		     | 
+		     ;
+WhileStatement       : WHILE Expression DO StatementSequence END
+		     ;
+RepeatStement        : REPEAT StatementSequence UNTIL Expression 
+		     ;
+ForStatement         : FOR IDENTIFIER ASSIGN Expression TO Expression DO StatementSequence END
+		     | FOR IDENTIFIER ASSIGN Expression TO Expression DO StatementSequence END
+		     ;
+StopStatement        : STOP
+		     ;
+ReturnStatement      : RETURN Expression 
+		     | RETURN
+		     ;
+ReadStatement        : READ OPEN ReadStatementInner CLOSE 
+		     ;
+ReadStatementInner   : LValue COM LValue ReadStatementInner 
+		     |
+		     ;
+WriteStatement       : WRITE OPEN WriteInnerStatement CLOSE
+		     ;
+WriteInnerStatement  : Expression COM Expression WriteInnerStatement
+		     |
+		     ;
+ProcedureCall        : IDENTIFIER OPEN ProcedureCallInner CLOSE
+		     ;
+ProcedureCallInner   : Expression COM Expression ProcedureCallInner 
+		     |
+		     ;
+NullStatement        : %empty 
+		     ;
+Expression           : Expression OR Expression 
+		     | Expression AND Expression 
+		     | Expression EQUAL Expression 
+		     | Expression NEG Expression 
+		     | Expression LEG Expression 
+		     | Expression GRTEQ Expression 
+		     | Expression LES Expression 
+		     | Expression GRT Expression 
+		     | Expression ADD Expression 
+		     | Expression SUB Expression
+		     | Expression MULT Expression 
+		     | Expression DIV Expression 
+		     | Expression MOD Expression 
+		     | TILD Expression 
+		     | SUB Expression 
+		     | OPEN Expression CLOSE 
+		     | IDENTIFIER OPEN ExpressionIdentInner CLOSE 
+		     | CHR OPEN Expression CLOSE 
+		     | ORD OPEN Expression CLOSE 
+		     | PRED OPEN Expression CLOSE 
+		     | SUCC OPEN Expression CLOSE 
+		     | LValue
+		     ;
+ExpressionIdentInner : Expression COM Expression ExpressionIdentInner 
+		     |
+		     ;
+LValue               : IDENTIFIER DOT IDENTIFIER LValue  
+		     | IDENTIFIER OPENBRAC Expression CLOSEBRAC LValue 
+		     |
+		     ;
 
-StatementList : StatementList Statement{}
-              | {};
-Statement : Expression DONE {std::cout << $1 << std::endl;}
-          | LET ID EQUAL Expression DONE{symbol_table.store($2,$4);delete($2);}
-          | DONE{};
-Expression : Expression ADD Term {$$ = $1 + $3;}
-           | Expression SUB Term {$$ = $1 - $3;}
-           | Term {$$ = $1;};
-
-Term : Term MULT Factor { $$ = $1 * $3;}
-     | Term Factor { $$ = $1 * $2;}
-     | Term DIV Factor { $$ = $1 / $3;}
-     | Factor {$$ = $1;}
-     ;
-Factor : OPEN Expression CLOSE {$$ = $2;}
-       | NUMBER {$$ = $1;}
-       | ID {$$ = symbol_table.lookup($1);delete($1);}
-       ;
 
 %%
 

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/HookShare/Zach/homework/cs4700/CourseMaterials/cs5300/examples/calc
+CMAKE_SOURCE_DIR = /home/HookShare/Zach/homework/compiler/calc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/HookShare/Zach/homework/cs4700/CourseMaterials/cs5300/examples/calc
+CMAKE_BINARY_DIR = /home/HookShare/Zach/homework/compiler/calc
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/HookShare/Zach/homework/cs4700/CourseMaterials/cs5300/examples/calc/CMakeFiles /home/HookShare/Zach/homework/cs4700/CourseMaterials/cs5300/examples/calc/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/HookShare/Zach/homework/compiler/calc/CMakeFiles /home/HookShare/Zach/homework/compiler/calc/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/HookShare/Zach/homework/cs4700/CourseMaterials/cs5300/examples/calc/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/HookShare/Zach/homework/compiler/calc/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -204,33 +204,6 @@ scanner.cpp.s:
 	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/scanner.cpp.s
 .PHONY : scanner.cpp.s
 
-symbol_table.o: symbol_table.cpp.o
-
-.PHONY : symbol_table.o
-
-# target to build an object file
-symbol_table.cpp.o:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/symbol_table.cpp.o
-.PHONY : symbol_table.cpp.o
-
-symbol_table.i: symbol_table.cpp.i
-
-.PHONY : symbol_table.i
-
-# target to preprocess a source file
-symbol_table.cpp.i:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/symbol_table.cpp.i
-.PHONY : symbol_table.cpp.i
-
-symbol_table.s: symbol_table.cpp.s
-
-.PHONY : symbol_table.s
-
-# target to generate assembly for a file
-symbol_table.cpp.s:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/symbol_table.cpp.s
-.PHONY : symbol_table.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -249,9 +222,6 @@ help:
 	@echo "... scanner.o"
 	@echo "... scanner.i"
 	@echo "... scanner.s"
-	@echo "... symbol_table.o"
-	@echo "... symbol_table.i"
-	@echo "... symbol_table.s"
 .PHONY : help
 
 

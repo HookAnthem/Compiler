@@ -1,4 +1,4 @@
-# Install script for directory: /home/HookShare/Zach/homework/cs4700/CourseMaterials/cs5300/examples/calc
+# Install script for directory: /home/HookShare/Zach/homework/compiler/calc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/HookShare/Zach/homework/cs4700/CourseMaterials/cs5300/examples/calc/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/HookShare/Zach/homework/compiler/calc/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

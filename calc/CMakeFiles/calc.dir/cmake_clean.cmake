@@ -3,7 +3,6 @@ file(REMOVE_RECURSE
   "parser.hpp"
   "scanner.cpp"
   "CMakeFiles/calc.dir/main.cpp.o"
-  "CMakeFiles/calc.dir/symbol_table.cpp.o"
   "CMakeFiles/calc.dir/parser.cpp.o"
   "CMakeFiles/calc.dir/scanner.cpp.o"
   "calc.pdb"

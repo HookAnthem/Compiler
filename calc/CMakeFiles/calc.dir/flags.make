@@ -6,5 +6,5 @@ CXX_FLAGS =  -g3 -std=c++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/HookShare/Zach/homework/cs4700/CourseMaterials/cs5300/examples/calc 
+CXX_INCLUDES = -I/home/HookShare/Zach/homework/compiler/calc 
 
