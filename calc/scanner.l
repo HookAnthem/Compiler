@@ -1,15 +1,20 @@
+%option noyywrap
+
 %{
 #include <cstdlib>
-
+#include <iostream>
+#include "Expression.hpp"
+#include "Type.hpp"
 #include "parser.hpp"
+
 %}
 
-%option noyywrap
 %%
-[$] {}
+
+[$] { }
 "ARRAY | array"         {return ARRAY;}
 "BEGIN| begin"          {return BEG;}
-"CHR | chr"             {return CHAR;}
+"CHR | chr"             {return CHR;}
 "CONST | const"         {return CONST;}
 "DO | do"               {return DO;}
 "DOWNTO | downto"       {return DOWNTO;}
@@ -41,46 +46,46 @@
 
 
 
-"-" {return SUB;}
-"*" {return MULT;}
-"/" {return DIV;}
-"%" {return MOD;}
-"+" {return ADD;}
+"-"  {return SUB;}
+"*"  {return MULT;}
+"/"  {return DIV;}
+"%"  {return MOD;}
+"+"  {return ADD;}
 
-"=" {return EQUAL;}
+"="  {return EQUAL;}
 "<>" {return NEG;}
 "<"  {return LES;}
 "<=" {return LEG;}
-">" {return GRT;}
+">"  {return GRT;}
 ">=" {return GRTEQ;}
 
-"˜" {return TILD;}
-"&" {return AND;}
-"|" {return OR;}
-"~" {return NOT;}
-"&" {return AND;}
-"." {return MEMA;}
-"," {return COM;}
-":" {return SUCHTHAT;}
-"(" {return OPEN;}
-")" {return CLOSE;}
-";" {return DONE;}
-"[" {return OPENBRAC;}
-"]" {return CLOSEBRAC;}
+"˜"  {return TILD;}
+"|"  {return OR;}
+"~"  {return NOT;}
+"&"  {return AND;}
+","  {return COM;}
+":"  {return SUCHTHAT;}
+"("  {return OPEN;}
+")"  {return CLOSE;}
+";"  {return DONE;}
+"["  {return OPENBRAC;}
+"]"  {return CLOSEBRAC;}
 ":=" {return ASSIGN;}
 
 "\n" {return NL;}
 "\r" {return CR;}
-"." {return DOT;}
+"."  {return DOT;}
 
-([a-z]|[A-Z]([a-z]|[A-Z]|_|[0=9])* {yylval.id = strdup(yytext);return IDENTIFIER;}
-'([a-z]|[A-Z])' {yylval.id = strdup(yytext);return CHARACTERCONST;}
-\"[a-z]|[A-Z]|[0-9]|_ \t\n]|(\\")*\" {yylval.id = strdup(yytext);return STRINGCONST;}
+[a-zA-Z][a-zA-Z0-9_]* {yylval.id = strdup(yytext); return IDENTIFIER;}
+'([a-z]|[A-Z])' {yylval.chr = strdup(yytext); return CHARACTERCONST;}
+
+\"[a-zA-z0-9_ \t\n]|(\")*\" {yylval.string = strdup(yytext);return STRINGCONST;}
+
+0([0-9])* {yylval.val = atoi(yytext); return OCTAL;}
+0x([0-9])* {yylval.val = atoi(yytext); return HEXADECIMAL;}
+[0-9]*\.[0-9]* {yylval.val = atoi(yytext); return NUMBER;}
 
 
-0([0-9])* {yylval.val = atof(yytext); return OCTAL;}
-0x([0-9])* {yylval.val = atof(yytext); return HEXADECIMAL;}
-[0-9]*\.[0-9]* {yylval.val = atof(yytext);return NUMBER;}
+. { std::cout << "Bitter Complaints" << yytext << std::endl; return 0; }
 
-
-* return ERROR;
+%%

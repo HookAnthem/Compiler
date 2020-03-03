@@ -1,9 +1,9 @@
 %{
 #include <iostream>
 #include <map>
-
+#include "Expression.hpp"
+#include "Type.hpp"
 #include "symbol_table.hpp"
-
 extern int yylex();
 void yyerror(const char*);
 %}
@@ -11,14 +11,18 @@ void yyerror(const char*);
 %union
 {
 int val;
-Expr* e;
+char* chr;
+char* string;
+Expression* e;
 char* id;
 Type* t;
 }
+ 
+
 
 %token  ARRAY
 %token  BEG 
-%token  CHAR
+%token  CHR
 %token  CONST
 %token  DO
 %token  DOWNTO
@@ -65,8 +69,6 @@ Type* t;
 %token  AND
 %token  OR
 %token  NOT
-%token  AND
-%token  MEMA
 %token  COM
 %token  SUCHTHAT
 %token  OPEN
@@ -79,75 +81,85 @@ Type* t;
 %token  NL
 %token  CR
 
-%token Dot
+%token  DOT
+%token  IDENTIFIER 
+%token  CHARACTERCONST
+%token  STRINGCONST
+%token  OCTAL
+%token  HEXADECIMAL
+%token  NUMBER
 
-%type <val> INT_LITERAL
+
+%type <id> IDENTIFIER 
+%type <chr> CHARACTERCONST
 %type <string> STRINGCONST
-%type <char> CHARACTERCONST
-%type <e> Expr
-%type <id> IDENTIFIER
-%type <val> HEXADECIMAL
 %type <val> OCTAL
+%type <val> HEXADECIMAL
 %type <val> NUMBER
-%type <t> TYPE
+%type <e> Expression 
+%type <t> Type SimpleType RecordType ArrayType
+
 %%
-Program              : OptConstDecl OptTypeDecl OptVarDecl ProFunkDecl Block DOT {}
+Program              : OptConstDecl OptTypeDecl OptVarDecl ProFunkDecl Block DOT { }
 		     ;
-OptConstDecl         : ConstantDecl {/*$$ ?*/ }
-	             |
+OptConstDecl         : %empty {}
+	             | ConstantDecl {/*$$ ?*/ }
 	             ;
-OptTypeDecl          : TypeDecl {/*$$ ?*/ }
-	             |
+OptTypeDecl          : %empty {}
+	             | TypeDecl {/*$$ ?*/ }
 	             ;
 OptVarDecl           : VarDecl {/*$$ ?*/ }
-	             |
+	             | %empty {}
 	             ;
-ProFunkDecl          : ProFunkDec ProcDecl {}
-	             | ProFunkDec FuncDecl {}
+ProFunkDecl          : %empty {}
+	             | ProFunkDecl FuncDecl {}
+		     | ProFunkDecl ProcDecl {}
 	             ;
-ConstantDecl         : CONST IdentExpr DONE 
+ConstantDecl         : CONST IdentExpr DONE {}
 	             ;
-IdentExpr            : IDENTIFIER EQUAL Expression
+IdentExpr            : IDENTIFIER EQUAL Expression {}
 	             ;
-ProcDecl             : PROCEDURE IDENTIFIER OPEN FormalParameters CLOSE Type DONE FORWARD DONE 
-	             | PROCEDURE IDENTIFIER OPEN FormalParameters CLOSE Type DONE Body DONE 
+ProcDecl             : PROCEDURE IDENTIFIER OPEN FormalParameters CLOSE Type DONE FORWARD DONE {} 
+	             | PROCEDURE IDENTIFIER OPEN FormalParameters CLOSE Type DONE Body DONE {}
 	             ;
-FuncDecl             : FUNCTION IDENTIFIER OPEN FormalParameters CLOSE Type DONE FORWARD DONE
-	             | FUNCTION IDENTIFIER OPEN FormalParameters CLOSE Type DONE Body DONE
+FuncDecl             : FUNCTION IDENTIFIER OPEN FormalParameters CLOSE Type DONE FORWARD DONE {}
+	             | FUNCTION IDENTIFIER OPEN FormalParameters CLOSE Type DONE Body DONE {}
 	             ;
 FormalParameters     : %empty {}
-		     | VAR IdentList DONE type {}
-		     | REF IdentList DONE type {}
-		     | FormalParameters DONE VAR IdentList DONE type {}
-		     | FormalParameters DONE REF IdentList DONE type {}
+		     | VAR IdentList DONE Type {}
+		     | REF IdentList DONE Type {}
+		     | FormalParameters DONE VAR IdentList DONE Type {}
+		     | FormalParameters DONE REF IdentList DONE Type {} 
 		     ;
-Body                 : OptConstantDecl OptTypeDecl OptVarDecl Block
+Body                 : OptConstDecl OptTypeDecl OptVarDecl Block {}
                      ;
-Block                : BEG StatementSequence END
+Block                : BEG StatementSequence END {}
                      ;
-TypeDecl             : TYPE IDENTIFIER EQUAL Type DONE TypeDecl 
-	             | IDENTIFIER EQUAL Type DONE TypeDecl 
-	             |
+TypeDecl             : TYPE IDENTIFIER EQUAL Type DONE TypeDeclList {}  
 	             ;
-Type                 : SimpleType { $$ = $1; }
-                     | RecordType { $$ = $1; }
-                     | ArrayType  { $$ = $1; }
+TypeDeclList         : %empty {}
+	             | IDENTIFIER EQUAL Type DONE TypeDeclList {}
+		     ;
+Type                 : SimpleType { $$ = $1; } 
+                     | RecordType { $$ = nullptr; }
+                     | ArrayType  { $$ = nullptr;}
                      ;
-SimpleType           : IDENTIFIER { $$ = $1 }
+SimpleType           : IDENTIFIER {}
 		     ;
-RecordType           : RECORD IdentList Type DONE RecordType END
-		     |
+RecordType           : RECORD TypeListOpt END {}
 		     ;
-ArrayType            : ARRAY OPENBRAC Expression SUCHTHAT Expression CLOSEBRAC OF Type DONE
+ArrayType            : ARRAY OPENBRAC Expression SUCHTHAT Expression CLOSEBRAC OF Type {} 
 		     ;
-IdentList            : IDENTIFIER COM IdentList
-		     | IDENTIFIER {}
+TypeListOpt          : %empty {}
+		     | IdentList SUCHTHAT Type DONE TypeListOpt {} 
 		     ;
-VarDecl              : VAR IdentList SUCHTHAT Type DONE VarDecl 
-		     |
+IdentList            : IDENTIFIER {}
+		     | IDENTIFIER COM IdentList {}
 		     ;
-StatementSequence    : Statement DONE StatementSequence 
-		     |
+VarDecl              : VAR IdentList SUCHTHAT Type DONE OptVarDecl {} 
+		     ;
+StatementSequence    : StatementSequence Statement DONE {}  
+		     | Statement DONE {}
 		     ;
 Statement            : AssignmentStatement {}
 		     | IfStatement {}
@@ -161,74 +173,79 @@ Statement            : AssignmentStatement {}
 		     | ProcedureCall {}
 		     | NullStatement {}
 		     ;
-AssignmentStatement  : Lvalue ASSIGN Expression {}
+AssignmentStatement  : LValue ASSIGN Expression {}
 		     ;
-IfStatement          : IF Expression THEN StatementSequence IfStatement END 
-		     | ELSEIF Expression THEN StatementSequence IfStatment 
-		     | ELSE Expression THEN StatementSequence 
-		     | 
+IfStatement          : IF Expression THEN StatementSequence ElseIfStatement ElseStatement END {} 
 		     ;
-WhileStatement       : WHILE Expression DO StatementSequence END
+ElseIfStatement      : %empty {}
+		     | ELSEIF Expression THEN StatementSequence ElseIfStatement {}
 		     ;
-RepeatStement        : REPEAT StatementSequence UNTIL Expression 
+ElseStatement        : %empty {}
+		     | ELSE StatementSequence {}
 		     ;
-ForStatement         : FOR IDENTIFIER ASSIGN Expression TO Expression DO StatementSequence END
-		     | FOR IDENTIFIER ASSIGN Expression TO Expression DO StatementSequence END
+WhileStatement       : WHILE Expression DO StatementSequence END {}
 		     ;
-StopStatement        : STOP
+RepeatStement        : REPEAT StatementSequence UNTIL Expression {}
 		     ;
-ReturnStatement      : RETURN Expression 
-		     | RETURN
+ForStatement         : FOR IDENTIFIER ASSIGN Expression TO Expression DO StatementSequence END {}
+		     | FOR IDENTIFIER ASSIGN Expression DOWNTO Expression DO StatementSequence END {}
 		     ;
-ReadStatement        : READ OPEN ReadStatementInner CLOSE 
+StopStatement        : STOP {}
 		     ;
-ReadStatementInner   : LValue COM LValue ReadStatementInner 
-		     |
+ReturnStatement      : RETURN OptExpression {}
 		     ;
-WriteStatement       : WRITE OPEN WriteInnerStatement CLOSE
+ReadStatement        : READ OPEN ReadStatementInner CLOSE {}
 		     ;
-WriteInnerStatement  : Expression COM Expression WriteInnerStatement
-		     |
+ReadStatementInner   : LValue COM LValue {}
+		     | LValue {}
 		     ;
-ProcedureCall        : IDENTIFIER OPEN ProcedureCallInner CLOSE
+WriteStatement       : WRITE OPEN WriteInnerStatement CLOSE {}
 		     ;
-ProcedureCallInner   : Expression COM Expression ProcedureCallInner 
-		     |
+WriteInnerStatement  : WriteInnerStatement COM Expression {}
+		     | Expression {}
 		     ;
-NullStatement        : %empty 
+ProcedureCall        : IDENTIFIER OPEN CLOSE {}
+		     | IDENTIFIER OPEN ProcedureCallInner CLOSE {}
 		     ;
-Expression           : Expression OR Expression 
-		     | Expression AND Expression 
-		     | Expression EQUAL Expression 
-		     | Expression NEG Expression 
-		     | Expression LEG Expression 
-		     | Expression GRTEQ Expression 
-		     | Expression LES Expression 
-		     | Expression GRT Expression 
-		     | Expression ADD Expression 
-		     | Expression SUB Expression
-		     | Expression MULT Expression 
-		     | Expression DIV Expression 
-		     | Expression MOD Expression 
-		     | TILD Expression 
-		     | SUB Expression 
-		     | OPEN Expression CLOSE 
-		     | IDENTIFIER OPEN ExpressionIdentInner CLOSE 
-		     | CHR OPEN Expression CLOSE 
-		     | ORD OPEN Expression CLOSE 
-		     | PRED OPEN Expression CLOSE 
-		     | SUCC OPEN Expression CLOSE 
-		     | LValue
+ProcedureCallInner   : ProcedureCallInner COM Expression {} 
+		     | Expression {}
 		     ;
-ExpressionIdentInner : Expression COM Expression ExpressionIdentInner 
-		     |
+NullStatement        : %empty {} 
 		     ;
-LValue               : IDENTIFIER DOT IDENTIFIER LValue  
-		     | IDENTIFIER OPENBRAC Expression CLOSEBRAC LValue 
-		     |
+OptExpression        : Expression 
+		     | %empty {}
 		     ;
-
-
+Expression           : Expression OR Expression {} 
+		     | Expression AND Expression {} 
+		     | Expression EQUAL Expression {} 
+		     | Expression NEG Expression {} 
+		     | Expression LEG Expression {} 
+		     | Expression GRTEQ Expression {} 
+		     | Expression LES Expression {} 
+		     | Expression GRT Expression {} 
+		     | Expression ADD Expression {} 
+		     | Expression SUB Expression {} 
+		     | Expression MULT Expression {} 
+		     | Expression DIV Expression {} 
+		     | Expression MOD Expression {} 
+		     | TILD Expression {} 
+		     | SUB Expression {} 
+		     | OPEN Expression CLOSE {}  
+		     | IDENTIFIER OPEN CLOSE {} 
+		     | IDENTIFIER OPEN ExpressionIdentInner CLOSE {} 
+		     | CHR OPEN Expression CLOSE {} 
+		     | ORD OPEN Expression CLOSE {} 
+		     | PRED OPEN Expression CLOSE {} 
+		     | SUCC OPEN Expression CLOSE {} 
+		     | LValue {}
+		     ;
+ExpressionIdentInner : ExpressionIdentInner COM Expression {}
+		     | Expression {}
+		     ;
+LValue               : IDENTIFIER 
+		     | LValue DOT IDENTIFIER {}
+		     | LValue IDENTIFIER OPENBRAC Expression CLOSEBRAC {}
+		     ;
 %%
 
 void yyerror(const char* msg)

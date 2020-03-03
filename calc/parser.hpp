@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_YY_HOME_HOOKSHARE_ZACH_HOMEWORK_CS4700_COURSEMATERIALS_CS5300_EXAMPLES_CALC_PARSER_HPP_INCLUDED
-# define YY_YY_HOME_HOOKSHARE_ZACH_HOMEWORK_CS4700_COURSEMATERIALS_CS5300_EXAMPLES_CALC_PARSER_HPP_INCLUDED
+#ifndef YY_YY_HOME_HOOKSHARE_ZACH_HOMEWORK_COMPILER_CALC_PARSER_HPP_INCLUDED
+# define YY_YY_HOME_HOOKSHARE_ZACH_HOMEWORK_COMPILER_CALC_PARSER_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -45,17 +45,69 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    ADD = 258,
-    SUB = 259,
-    MULT = 260,
-    DIV = 261,
-    OPEN = 262,
-    CLOSE = 263,
-    DONE = 264,
-    NUMBER = 265,
-    ID = 266,
-    EQUAL = 267,
-    LET = 268
+    ARRAY = 258,
+    BEG = 259,
+    CHR = 260,
+    CONST = 261,
+    DO = 262,
+    DOWNTO = 263,
+    ELSE = 264,
+    ELSEIF = 265,
+    END = 266,
+    FOR = 267,
+    FORWARD = 268,
+    FUNCTION = 269,
+    IF = 270,
+    OF = 271,
+    ORD = 272,
+    PRED = 273,
+    PROCEDURE = 274,
+    READ = 275,
+    RECORD = 276,
+    REF = 277,
+    REPEAT = 278,
+    RETURN = 279,
+    STOP = 280,
+    SUCC = 281,
+    THEN = 282,
+    TO = 283,
+    TYPE = 284,
+    UNTIL = 285,
+    VAR = 286,
+    WHILE = 287,
+    WRITE = 288,
+    SUB = 289,
+    MULT = 290,
+    DIV = 291,
+    MOD = 292,
+    ADD = 293,
+    EQUAL = 294,
+    NEG = 295,
+    LES = 296,
+    LEG = 297,
+    GRT = 298,
+    GRTEQ = 299,
+    TILD = 300,
+    AND = 301,
+    OR = 302,
+    NOT = 303,
+    COM = 304,
+    SUCHTHAT = 305,
+    OPEN = 306,
+    CLOSE = 307,
+    DONE = 308,
+    OPENBRAC = 309,
+    CLOSEBRAC = 310,
+    ASSIGN = 311,
+    NL = 312,
+    CR = 313,
+    DOT = 314,
+    IDENTIFIER = 315,
+    CHARACTERCONST = 316,
+    STRINGCONST = 317,
+    OCTAL = 318,
+    HEXADECIMAL = 319,
+    NUMBER = 320
   };
 #endif
 
@@ -66,10 +118,14 @@ union YYSTYPE
 {
 #line 12 "parser.y" /* yacc.c:1909  */
 
-float val;
+int val;
+char* chr;
+char* string;
+Expression* e;
 char* id;
+Type* t;
 
-#line 73 "/home/HookShare/Zach/homework/cs4700/CourseMaterials/cs5300/examples/calc/parser.hpp" /* yacc.c:1909  */
+#line 129 "/home/HookShare/Zach/homework/compiler/calc/parser.hpp" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -82,4 +138,4 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_HOME_HOOKSHARE_ZACH_HOMEWORK_CS4700_COURSEMATERIALS_CS5300_EXAMPLES_CALC_PARSER_HPP_INCLUDED  */
+#endif /* !YY_YY_HOME_HOOKSHARE_ZACH_HOMEWORK_COMPILER_CALC_PARSER_HPP_INCLUDED  */
