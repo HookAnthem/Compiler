@@ -39,6 +39,19 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
+/* "%code requires" blocks.  */
+#line 2 "parser.y" /* yacc.c:1909  */
+
+#include <iostream>
+#include <map>
+#include "Expression.hpp"
+#include "Type.hpp"
+#include "SymbolTable.hpp"
+#include "Global.hpp"
+extern int yylex();
+void yyerror(const char*);
+
+#line 55 "/home/HookShare/Zach/homework/compiler/calc/parser.hpp" /* yacc.c:1909  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -116,7 +129,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 12 "parser.y" /* yacc.c:1909  */
+#line 14 "parser.y" /* yacc.c:1909  */
 
 int val;
 char* chr;
@@ -125,7 +138,7 @@ Expression* e;
 char* id;
 Type* t;
 
-#line 129 "/home/HookShare/Zach/homework/compiler/calc/parser.hpp" /* yacc.c:1909  */
+#line 142 "/home/HookShare/Zach/homework/compiler/calc/parser.hpp" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

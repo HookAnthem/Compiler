@@ -123,6 +123,222 @@ calc/fast:
 	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/build
 .PHONY : calc/fast
 
+ArrayType.o: ArrayType.cpp.o
+
+.PHONY : ArrayType.o
+
+# target to build an object file
+ArrayType.cpp.o:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/ArrayType.cpp.o
+.PHONY : ArrayType.cpp.o
+
+ArrayType.i: ArrayType.cpp.i
+
+.PHONY : ArrayType.i
+
+# target to preprocess a source file
+ArrayType.cpp.i:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/ArrayType.cpp.i
+.PHONY : ArrayType.cpp.i
+
+ArrayType.s: ArrayType.cpp.s
+
+.PHONY : ArrayType.s
+
+# target to generate assembly for a file
+ArrayType.cpp.s:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/ArrayType.cpp.s
+.PHONY : ArrayType.cpp.s
+
+Expression.o: Expression.cpp.o
+
+.PHONY : Expression.o
+
+# target to build an object file
+Expression.cpp.o:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Expression.cpp.o
+.PHONY : Expression.cpp.o
+
+Expression.i: Expression.cpp.i
+
+.PHONY : Expression.i
+
+# target to preprocess a source file
+Expression.cpp.i:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Expression.cpp.i
+.PHONY : Expression.cpp.i
+
+Expression.s: Expression.cpp.s
+
+.PHONY : Expression.s
+
+# target to generate assembly for a file
+Expression.cpp.s:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Expression.cpp.s
+.PHONY : Expression.cpp.s
+
+Global.o: Global.cpp.o
+
+.PHONY : Global.o
+
+# target to build an object file
+Global.cpp.o:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Global.cpp.o
+.PHONY : Global.cpp.o
+
+Global.i: Global.cpp.i
+
+.PHONY : Global.i
+
+# target to preprocess a source file
+Global.cpp.i:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Global.cpp.i
+.PHONY : Global.cpp.i
+
+Global.s: Global.cpp.s
+
+.PHONY : Global.s
+
+# target to generate assembly for a file
+Global.cpp.s:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Global.cpp.s
+.PHONY : Global.cpp.s
+
+Operations.o: Operations.cpp.o
+
+.PHONY : Operations.o
+
+# target to build an object file
+Operations.cpp.o:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Operations.cpp.o
+.PHONY : Operations.cpp.o
+
+Operations.i: Operations.cpp.i
+
+.PHONY : Operations.i
+
+# target to preprocess a source file
+Operations.cpp.i:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Operations.cpp.i
+.PHONY : Operations.cpp.i
+
+Operations.s: Operations.cpp.s
+
+.PHONY : Operations.s
+
+# target to generate assembly for a file
+Operations.cpp.s:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Operations.cpp.s
+.PHONY : Operations.cpp.s
+
+RecordType.o: RecordType.cpp.o
+
+.PHONY : RecordType.o
+
+# target to build an object file
+RecordType.cpp.o:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/RecordType.cpp.o
+.PHONY : RecordType.cpp.o
+
+RecordType.i: RecordType.cpp.i
+
+.PHONY : RecordType.i
+
+# target to preprocess a source file
+RecordType.cpp.i:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/RecordType.cpp.i
+.PHONY : RecordType.cpp.i
+
+RecordType.s: RecordType.cpp.s
+
+.PHONY : RecordType.s
+
+# target to generate assembly for a file
+RecordType.cpp.s:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/RecordType.cpp.s
+.PHONY : RecordType.cpp.s
+
+SimpleType.o: SimpleType.cpp.o
+
+.PHONY : SimpleType.o
+
+# target to build an object file
+SimpleType.cpp.o:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/SimpleType.cpp.o
+.PHONY : SimpleType.cpp.o
+
+SimpleType.i: SimpleType.cpp.i
+
+.PHONY : SimpleType.i
+
+# target to preprocess a source file
+SimpleType.cpp.i:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/SimpleType.cpp.i
+.PHONY : SimpleType.cpp.i
+
+SimpleType.s: SimpleType.cpp.s
+
+.PHONY : SimpleType.s
+
+# target to generate assembly for a file
+SimpleType.cpp.s:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/SimpleType.cpp.s
+.PHONY : SimpleType.cpp.s
+
+SymbolTable.o: SymbolTable.cpp.o
+
+.PHONY : SymbolTable.o
+
+# target to build an object file
+SymbolTable.cpp.o:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/SymbolTable.cpp.o
+.PHONY : SymbolTable.cpp.o
+
+SymbolTable.i: SymbolTable.cpp.i
+
+.PHONY : SymbolTable.i
+
+# target to preprocess a source file
+SymbolTable.cpp.i:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/SymbolTable.cpp.i
+.PHONY : SymbolTable.cpp.i
+
+SymbolTable.s: SymbolTable.cpp.s
+
+.PHONY : SymbolTable.s
+
+# target to generate assembly for a file
+SymbolTable.cpp.s:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/SymbolTable.cpp.s
+.PHONY : SymbolTable.cpp.s
+
+Type.o: Type.cpp.o
+
+.PHONY : Type.o
+
+# target to build an object file
+Type.cpp.o:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Type.cpp.o
+.PHONY : Type.cpp.o
+
+Type.i: Type.cpp.i
+
+.PHONY : Type.i
+
+# target to preprocess a source file
+Type.cpp.i:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Type.cpp.i
+.PHONY : Type.cpp.i
+
+Type.s: Type.cpp.s
+
+.PHONY : Type.s
+
+# target to generate assembly for a file
+Type.cpp.s:
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Type.cpp.s
+.PHONY : Type.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -213,6 +429,30 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... calc"
 	@echo "... edit_cache"
+	@echo "... ArrayType.o"
+	@echo "... ArrayType.i"
+	@echo "... ArrayType.s"
+	@echo "... Expression.o"
+	@echo "... Expression.i"
+	@echo "... Expression.s"
+	@echo "... Global.o"
+	@echo "... Global.i"
+	@echo "... Global.s"
+	@echo "... Operations.o"
+	@echo "... Operations.i"
+	@echo "... Operations.s"
+	@echo "... RecordType.o"
+	@echo "... RecordType.i"
+	@echo "... RecordType.s"
+	@echo "... SimpleType.o"
+	@echo "... SimpleType.i"
+	@echo "... SimpleType.s"
+	@echo "... SymbolTable.o"
+	@echo "... SymbolTable.i"
+	@echo "... SymbolTable.s"
+	@echo "... Type.o"
+	@echo "... Type.i"
+	@echo "... Type.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

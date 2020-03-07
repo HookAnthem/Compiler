@@ -6,7 +6,7 @@
 #include "Expression.hpp"
 #include "Type.hpp"
 #include "parser.hpp"
-
+#include "Global.hpp"
 %}
 
 %%

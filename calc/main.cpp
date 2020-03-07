@@ -1,4 +1,3 @@
-/*#include "symbol_table.hpp"*/
 
 extern int yyparse();
 

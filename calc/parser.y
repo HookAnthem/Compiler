@@ -1,12 +1,14 @@
-%{
+%code requires
+{
 #include <iostream>
 #include <map>
 #include "Expression.hpp"
 #include "Type.hpp"
-#include "symbol_table.hpp"
+#include "SymbolTable.hpp"
+#include "Global.hpp"
 extern int yylex();
 void yyerror(const char*);
-%}
+}
 
 %union
 {
@@ -100,15 +102,15 @@ Type* t;
 %type <t> Type SimpleType RecordType ArrayType
 
 %%
-Program              : OptConstDecl OptTypeDecl OptVarDecl ProFunkDecl Block DOT { }
+Program              : OptConstDecl OptTypeDecl OptVarDecl ProFunkDecl Block DOT { YYACCEPT; }
 		     ;
 OptConstDecl         : %empty {}
-	             | ConstantDecl {/*$$ ?*/ }
+	             | ConstantDecl { }
 	             ;
 OptTypeDecl          : %empty {}
-	             | TypeDecl {/*$$ ?*/ }
+	             | TypeDecl { }
 	             ;
-OptVarDecl           : VarDecl {/*$$ ?*/ }
+OptVarDecl           : VarDecl { }
 	             | %empty {}
 	             ;
 ProFunkDecl          : %empty {}
@@ -117,7 +119,7 @@ ProFunkDecl          : %empty {}
 	             ;
 ConstantDecl         : CONST IdentExpr DONE {}
 	             ;
-IdentExpr            : IDENTIFIER EQUAL Expression {}
+IdentExpr            : IDENTIFIER EQUAL Expression {SYMBOL_TABLE.Store(std::string($1), $3);}
 	             ;
 ProcDecl             : PROCEDURE IDENTIFIER OPEN FormalParameters CLOSE Type DONE FORWARD DONE {} 
 	             | PROCEDURE IDENTIFIER OPEN FormalParameters CLOSE Type DONE Body DONE {}
@@ -135,7 +137,7 @@ Body                 : OptConstDecl OptTypeDecl OptVarDecl Block {}
                      ;
 Block                : BEG StatementSequence END {}
                      ;
-TypeDecl             : TYPE IDENTIFIER EQUAL Type DONE TypeDeclList {}  
+TypeDecl             : TYPE IDENTIFIER EQUAL Type DONE TypeDeclList {SYMBOL_TABLE.Store(std::string($2),$4);}  
 	             ;
 TypeDeclList         : %empty {}
 	             | IDENTIFIER EQUAL Type DONE TypeDeclList {}
@@ -144,14 +146,14 @@ Type                 : SimpleType { $$ = $1; }
                      | RecordType { $$ = nullptr; }
                      | ArrayType  { $$ = nullptr;}
                      ;
-SimpleType           : IDENTIFIER {}
+SimpleType           : IDENTIFIER {$$ =SYMBOL_TABLE.TypeLookup(std::string($1));}
 		     ;
-RecordType           : RECORD TypeListOpt END {}
+RecordType           : RECORD TypeListOpt END {/*$$ = dynamic_cast<Type *>(new RecordType($2));*/}
 		     ;
-ArrayType            : ARRAY OPENBRAC Expression SUCHTHAT Expression CLOSEBRAC OF Type {} 
+ArrayType            : ARRAY OPENBRAC Expression SUCHTHAT Expression CLOSEBRAC OF Type {$$ = dynamic_cast<Type *>(new ArrayType($3, $5, $8));} 
 		     ;
 TypeListOpt          : %empty {}
-		     | IdentList SUCHTHAT Type DONE TypeListOpt {} 
+		     | IdentList SUCHTHAT Type DONE TypeListOpt /*{$$ = new Record($1,$3)}*/ 
 		     ;
 IdentList            : IDENTIFIER {}
 		     | IDENTIFIER COM IdentList {}
@@ -173,7 +175,7 @@ Statement            : AssignmentStatement {}
 		     | ProcedureCall {}
 		     | NullStatement {}
 		     ;
-AssignmentStatement  : LValue ASSIGN Expression {}
+AssignmentStatement  : LValue ASSIGN Expression {/*Assign($1, $3);*/}
 		     ;
 IfStatement          : IF Expression THEN StatementSequence ElseIfStatement ElseStatement END {} 
 		     ;
@@ -199,10 +201,10 @@ ReadStatement        : READ OPEN ReadStatementInner CLOSE {}
 ReadStatementInner   : LValue COM LValue {}
 		     | LValue {}
 		     ;
-WriteStatement       : WRITE OPEN WriteInnerStatement CLOSE {}
+WriteStatement       : WRITE OPEN WriteInnerStatement CLOSE 
 		     ;
-WriteInnerStatement  : WriteInnerStatement COM Expression {}
-		     | Expression {}
+WriteInnerStatement  : WriteInnerStatement COM Expression {Write($3);}
+		     | Expression {Write($1);}
 		     ;
 ProcedureCall        : IDENTIFIER OPEN CLOSE {}
 		     | IDENTIFIER OPEN ProcedureCallInner CLOSE {}
@@ -215,19 +217,19 @@ NullStatement        : %empty {}
 OptExpression        : Expression 
 		     | %empty {}
 		     ;
-Expression           : Expression OR Expression {} 
-		     | Expression AND Expression {} 
-		     | Expression EQUAL Expression {} 
-		     | Expression NEG Expression {} 
-		     | Expression LEG Expression {} 
-		     | Expression GRTEQ Expression {} 
-		     | Expression LES Expression {} 
-		     | Expression GRT Expression {} 
-		     | Expression ADD Expression {} 
-		     | Expression SUB Expression {} 
-		     | Expression MULT Expression {} 
-		     | Expression DIV Expression {} 
-		     | Expression MOD Expression {} 
+Expression           : Expression OR Expression {$$ = Or($1,$3);} 
+		     | Expression AND Expression {$$ = And($1,$3);} 
+		     | Expression EQUAL Expression {$$ = equal($1,$3);} 
+		     | Expression NEG Expression {$$ = neg($1,$3);} 
+		     | Expression LEG Expression {$$ = leg($1,$3);} 
+		     | Expression GRTEQ Expression {$$ = grteq($1,$3);} 
+		     | Expression LES Expression {$$ = les($1,$3);} 
+		     | Expression GRT Expression {$$ = grt($1,$3);} 
+		     | Expression ADD Expression {$$ = add($1,$3);} 
+		     | Expression SUB Expression {$$ = sub($1,$3);} 
+		     | Expression MULT Expression {$$ = mult($1,$3);} 
+		     | Expression DIV Expression {$$ = div($1,$3);} 
+		     | Expression MOD Expression {$$ = mod($1,$3);} 
 		     | TILD Expression {} 
 		     | SUB Expression {} 
 		     | OPEN Expression CLOSE {}  
@@ -238,11 +240,12 @@ Expression           : Expression OR Expression {}
 		     | PRED OPEN Expression CLOSE {} 
 		     | SUCC OPEN Expression CLOSE {} 
 		     | LValue {}
+		     | STRINGCONST {} 
 		     ;
 ExpressionIdentInner : ExpressionIdentInner COM Expression {}
 		     | Expression {}
 		     ;
-LValue               : IDENTIFIER 
+LValue               : IDENTIFIER {}  
 		     | LValue DOT IDENTIFIER {}
 		     | LValue IDENTIFIER OPENBRAC Expression CLOSEBRAC {}
 		     ;
