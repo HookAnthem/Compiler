@@ -137,8 +137,9 @@ char* string;
 Expression* e;
 char* id;
 Type* t;
+std::vector<std::string>* typeList;
 
-#line 142 "/home/HookShare/Zach/homework/compiler/calc/parser.hpp" /* yacc.c:1909  */
+#line 143 "/home/HookShare/Zach/homework/compiler/calc/parser.hpp" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

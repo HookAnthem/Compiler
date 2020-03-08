@@ -2,18 +2,20 @@
 #include "Global.hpp"
 
 class Expression;
+
 class Type {
   public:
-    std::string memLoc;
     int size;
     Type * base = this;
     virtual Type * baseType();
 };
+
 class SimpleType : public Type 
 {
    public:
        SimpleType();
 };
+
 class RecordType: public Type
 {
     public:
@@ -25,6 +27,7 @@ class RecordType: public Type
 	std::map<std::string, int> offsetTable;
 	std::map<std::string, Type*> typeTable;
 };
+
 class ArrayType : public Type 
 {
     public: 

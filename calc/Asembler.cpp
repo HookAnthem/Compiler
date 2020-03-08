@@ -6,7 +6,8 @@ Asembler::Asembler()
 }
 Asembler::Asembler(std::string id)
 {
-    file.open(id);
+    this->file_name = id;
+    file.open(file_name);
 }
 Asembler::~Asembler()
 {

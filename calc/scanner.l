@@ -12,37 +12,37 @@
 %%
 
 [$] { }
-"ARRAY | array"         {return ARRAY;}
-"BEGIN| begin"          {return BEG;}
-"CHR | chr"             {return CHR;}
-"CONST | const"         {return CONST;}
-"DO | do"               {return DO;}
-"DOWNTO | downto"       {return DOWNTO;}
-"ELSE | else"           {return ELSE;}
-"ELSEIF | elseif"       {return ELSEIF;}
-"END | end"             {return END;}
-"FOR | for"             {return FOR;}
-"FORWARD | forward"     {return FORWARD;}
-"FUNCTION | function"   {return FUNCTION;}
-"IF | if"               {return IF;}
-"OF | of"               {return OF;}
-"ORD | ord"             {return ORD;}
-"PRED | pred"           {return PRED;}
-"PROCEDURE | procedure" {return PROCEDURE;}
-"READ | read"           {return READ;}
-"RECORD | record"       {return RECORD;}
-"REF | ref"             {return REF;}
-"REPEAT | repeat"       {return REPEAT;}
-"RETURN | return"       {return RETURN;}
-"STOP |stop"            {return STOP;}
-"SUCC | succ"           {return SUCC;}
-"THEN | then"           {return THEN;}
-"TO | to"               {return TO;}
-"TYPE | type"           {return TYPE;}
-"UNTIL | until"         {return UNTIL;}
-"VAR | var"             {return VAR;}
-"WHILE | while"         {return WHILE;}
-"WRITE | write"         {return WRITE;}
+ARRAY|array         {return ARRAY;}
+BEGIN|begin          {return BEG;}
+CHR|chr             {return CHR;}
+CONST|const         {return CONST;}
+DO|do               {return DO;}
+DOWNTO|downto       {return DOWNTO;}
+ELSE|else           {return ELSE;}
+ELSEIF|elseif       {return ELSEIF;}
+END|end             {return END;}
+FOR|for             {return FOR;}
+FORWARD|forward     {return FORWARD;}
+FUNCTION|function   {return FUNCTION;}
+IF|if               {return IF;}
+OF|of               {return OF;}
+ORD|ord             {return ORD;}
+PRED|pred           {return PRED;}
+PROCEDURE|procedure {return PROCEDURE;}
+READ|read           {return READ;}
+RECORD|record       {return RECORD;}
+REF|ref             {return REF;}
+REPEAT|repeat       {return REPEAT;}
+RETURN|return       {return RETURN;}
+STOP|stop            {return STOP;}
+SUCC|succ           {return SUCC;}
+THEN|then           {return THEN;}
+TO|to               {return TO;}
+TYPE|type           {return TYPE;}
+UNTIL|until         {return UNTIL;}
+VAR|var             {return VAR;}
+WHILE|while         {return WHILE;}
+WRITE|write         {return WRITE;}
 
 
 
