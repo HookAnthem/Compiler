@@ -1,8 +1,9 @@
 #include "Global.hpp"
-extern SymbolTable SYMBOL_TABLE;
-extern RegPool REG_POOL; 
-extern Asembler FOUT;
-extern list STRING_LIST;
+
+SymbolTable SYMBOL_TABLE;
+RegPool REG_POOL; 
+Asembler FOUT;
+list STRING_LIST;
 
 SimpleType TYPE_INT;
 SimpleType TYPE_CHAR;

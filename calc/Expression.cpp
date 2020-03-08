@@ -11,7 +11,13 @@ Expression::Expression(int x, Type * t)
     this->type = t; 
     this->is_const = true;
 }
-
+Expression::~Expression()
+{
+	if(!this->has_add && !this->is_const && this->memLoc.length() > 0)
+	{
+	    REG_POOL.ReleaseReg(this->memLoc);
+	}
+}
 void CheckExpression(Expression * one, Expression * two){
 	if(!one || !two){ 
 		std::cout << "Error: nullptr during expression apply." << std::endl;

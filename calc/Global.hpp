@@ -18,11 +18,10 @@
 #include "RegPool.hpp"
 #include "Asembler.hpp"
 #include "list.hpp"
-/* Types*/
 #include "Type.hpp"
 
 class Type;
-class Expressions;
+class Expression;
 class SymbolTable;
 class RegPool;
 class Asembler;
