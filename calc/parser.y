@@ -203,8 +203,8 @@ ReadStatementInner   : LValue COM LValue {}
 		     ;
 WriteStatement       : WRITE OPEN WriteInnerStatement CLOSE 
 		     ;
-WriteInnerStatement  : WriteInnerStatement COM Expression {Write($3);}
-		     | Expression {Write($1);}
+WriteInnerStatement  : WriteInnerStatement COM Expression {}
+		     | Expression {}
 		     ;
 ProcedureCall        : IDENTIFIER OPEN CLOSE {}
 		     | IDENTIFIER OPEN ProcedureCallInner CLOSE {}

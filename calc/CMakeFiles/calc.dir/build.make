@@ -140,28 +140,28 @@ CMakeFiles/calc.dir/Expression.cpp.o.provides: CMakeFiles/calc.dir/Expression.cp
 CMakeFiles/calc.dir/Expression.cpp.o.provides.build: CMakeFiles/calc.dir/Expression.cpp.o
 
 
-CMakeFiles/calc.dir/ArrayType.cpp.o: CMakeFiles/calc.dir/flags.make
-CMakeFiles/calc.dir/ArrayType.cpp.o: ArrayType.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HookShare/Zach/homework/compiler/calc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/calc.dir/ArrayType.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/calc.dir/ArrayType.cpp.o -c /home/HookShare/Zach/homework/compiler/calc/ArrayType.cpp
+CMakeFiles/calc.dir/Type.cpp.o: CMakeFiles/calc.dir/flags.make
+CMakeFiles/calc.dir/Type.cpp.o: Type.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HookShare/Zach/homework/compiler/calc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/calc.dir/Type.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/calc.dir/Type.cpp.o -c /home/HookShare/Zach/homework/compiler/calc/Type.cpp
 
-CMakeFiles/calc.dir/ArrayType.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/calc.dir/ArrayType.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/HookShare/Zach/homework/compiler/calc/ArrayType.cpp > CMakeFiles/calc.dir/ArrayType.cpp.i
+CMakeFiles/calc.dir/Type.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/calc.dir/Type.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/HookShare/Zach/homework/compiler/calc/Type.cpp > CMakeFiles/calc.dir/Type.cpp.i
 
-CMakeFiles/calc.dir/ArrayType.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/calc.dir/ArrayType.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/HookShare/Zach/homework/compiler/calc/ArrayType.cpp -o CMakeFiles/calc.dir/ArrayType.cpp.s
+CMakeFiles/calc.dir/Type.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/calc.dir/Type.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/HookShare/Zach/homework/compiler/calc/Type.cpp -o CMakeFiles/calc.dir/Type.cpp.s
 
-CMakeFiles/calc.dir/ArrayType.cpp.o.requires:
+CMakeFiles/calc.dir/Type.cpp.o.requires:
 
-.PHONY : CMakeFiles/calc.dir/ArrayType.cpp.o.requires
+.PHONY : CMakeFiles/calc.dir/Type.cpp.o.requires
 
-CMakeFiles/calc.dir/ArrayType.cpp.o.provides: CMakeFiles/calc.dir/ArrayType.cpp.o.requires
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/ArrayType.cpp.o.provides.build
-.PHONY : CMakeFiles/calc.dir/ArrayType.cpp.o.provides
+CMakeFiles/calc.dir/Type.cpp.o.provides: CMakeFiles/calc.dir/Type.cpp.o.requires
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Type.cpp.o.provides.build
+.PHONY : CMakeFiles/calc.dir/Type.cpp.o.provides
 
-CMakeFiles/calc.dir/ArrayType.cpp.o.provides.build: CMakeFiles/calc.dir/ArrayType.cpp.o
+CMakeFiles/calc.dir/Type.cpp.o.provides.build: CMakeFiles/calc.dir/Type.cpp.o
 
 
 CMakeFiles/calc.dir/Operations.cpp.o: CMakeFiles/calc.dir/flags.make
@@ -188,57 +188,9 @@ CMakeFiles/calc.dir/Operations.cpp.o.provides: CMakeFiles/calc.dir/Operations.cp
 CMakeFiles/calc.dir/Operations.cpp.o.provides.build: CMakeFiles/calc.dir/Operations.cpp.o
 
 
-CMakeFiles/calc.dir/RecordType.cpp.o: CMakeFiles/calc.dir/flags.make
-CMakeFiles/calc.dir/RecordType.cpp.o: RecordType.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HookShare/Zach/homework/compiler/calc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/calc.dir/RecordType.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/calc.dir/RecordType.cpp.o -c /home/HookShare/Zach/homework/compiler/calc/RecordType.cpp
-
-CMakeFiles/calc.dir/RecordType.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/calc.dir/RecordType.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/HookShare/Zach/homework/compiler/calc/RecordType.cpp > CMakeFiles/calc.dir/RecordType.cpp.i
-
-CMakeFiles/calc.dir/RecordType.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/calc.dir/RecordType.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/HookShare/Zach/homework/compiler/calc/RecordType.cpp -o CMakeFiles/calc.dir/RecordType.cpp.s
-
-CMakeFiles/calc.dir/RecordType.cpp.o.requires:
-
-.PHONY : CMakeFiles/calc.dir/RecordType.cpp.o.requires
-
-CMakeFiles/calc.dir/RecordType.cpp.o.provides: CMakeFiles/calc.dir/RecordType.cpp.o.requires
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/RecordType.cpp.o.provides.build
-.PHONY : CMakeFiles/calc.dir/RecordType.cpp.o.provides
-
-CMakeFiles/calc.dir/RecordType.cpp.o.provides.build: CMakeFiles/calc.dir/RecordType.cpp.o
-
-
-CMakeFiles/calc.dir/SimpleType.cpp.o: CMakeFiles/calc.dir/flags.make
-CMakeFiles/calc.dir/SimpleType.cpp.o: SimpleType.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HookShare/Zach/homework/compiler/calc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/calc.dir/SimpleType.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/calc.dir/SimpleType.cpp.o -c /home/HookShare/Zach/homework/compiler/calc/SimpleType.cpp
-
-CMakeFiles/calc.dir/SimpleType.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/calc.dir/SimpleType.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/HookShare/Zach/homework/compiler/calc/SimpleType.cpp > CMakeFiles/calc.dir/SimpleType.cpp.i
-
-CMakeFiles/calc.dir/SimpleType.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/calc.dir/SimpleType.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/HookShare/Zach/homework/compiler/calc/SimpleType.cpp -o CMakeFiles/calc.dir/SimpleType.cpp.s
-
-CMakeFiles/calc.dir/SimpleType.cpp.o.requires:
-
-.PHONY : CMakeFiles/calc.dir/SimpleType.cpp.o.requires
-
-CMakeFiles/calc.dir/SimpleType.cpp.o.provides: CMakeFiles/calc.dir/SimpleType.cpp.o.requires
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/SimpleType.cpp.o.provides.build
-.PHONY : CMakeFiles/calc.dir/SimpleType.cpp.o.provides
-
-CMakeFiles/calc.dir/SimpleType.cpp.o.provides.build: CMakeFiles/calc.dir/SimpleType.cpp.o
-
-
 CMakeFiles/calc.dir/SymbolTable.cpp.o: CMakeFiles/calc.dir/flags.make
 CMakeFiles/calc.dir/SymbolTable.cpp.o: SymbolTable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HookShare/Zach/homework/compiler/calc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/calc.dir/SymbolTable.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HookShare/Zach/homework/compiler/calc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/calc.dir/SymbolTable.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/calc.dir/SymbolTable.cpp.o -c /home/HookShare/Zach/homework/compiler/calc/SymbolTable.cpp
 
 CMakeFiles/calc.dir/SymbolTable.cpp.i: cmake_force
@@ -260,28 +212,76 @@ CMakeFiles/calc.dir/SymbolTable.cpp.o.provides: CMakeFiles/calc.dir/SymbolTable.
 CMakeFiles/calc.dir/SymbolTable.cpp.o.provides.build: CMakeFiles/calc.dir/SymbolTable.cpp.o
 
 
-CMakeFiles/calc.dir/Type.cpp.o: CMakeFiles/calc.dir/flags.make
-CMakeFiles/calc.dir/Type.cpp.o: Type.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HookShare/Zach/homework/compiler/calc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/calc.dir/Type.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/calc.dir/Type.cpp.o -c /home/HookShare/Zach/homework/compiler/calc/Type.cpp
+CMakeFiles/calc.dir/RegPool.cpp.o: CMakeFiles/calc.dir/flags.make
+CMakeFiles/calc.dir/RegPool.cpp.o: RegPool.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HookShare/Zach/homework/compiler/calc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/calc.dir/RegPool.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/calc.dir/RegPool.cpp.o -c /home/HookShare/Zach/homework/compiler/calc/RegPool.cpp
 
-CMakeFiles/calc.dir/Type.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/calc.dir/Type.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/HookShare/Zach/homework/compiler/calc/Type.cpp > CMakeFiles/calc.dir/Type.cpp.i
+CMakeFiles/calc.dir/RegPool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/calc.dir/RegPool.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/HookShare/Zach/homework/compiler/calc/RegPool.cpp > CMakeFiles/calc.dir/RegPool.cpp.i
 
-CMakeFiles/calc.dir/Type.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/calc.dir/Type.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/HookShare/Zach/homework/compiler/calc/Type.cpp -o CMakeFiles/calc.dir/Type.cpp.s
+CMakeFiles/calc.dir/RegPool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/calc.dir/RegPool.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/HookShare/Zach/homework/compiler/calc/RegPool.cpp -o CMakeFiles/calc.dir/RegPool.cpp.s
 
-CMakeFiles/calc.dir/Type.cpp.o.requires:
+CMakeFiles/calc.dir/RegPool.cpp.o.requires:
 
-.PHONY : CMakeFiles/calc.dir/Type.cpp.o.requires
+.PHONY : CMakeFiles/calc.dir/RegPool.cpp.o.requires
 
-CMakeFiles/calc.dir/Type.cpp.o.provides: CMakeFiles/calc.dir/Type.cpp.o.requires
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Type.cpp.o.provides.build
-.PHONY : CMakeFiles/calc.dir/Type.cpp.o.provides
+CMakeFiles/calc.dir/RegPool.cpp.o.provides: CMakeFiles/calc.dir/RegPool.cpp.o.requires
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/RegPool.cpp.o.provides.build
+.PHONY : CMakeFiles/calc.dir/RegPool.cpp.o.provides
 
-CMakeFiles/calc.dir/Type.cpp.o.provides.build: CMakeFiles/calc.dir/Type.cpp.o
+CMakeFiles/calc.dir/RegPool.cpp.o.provides.build: CMakeFiles/calc.dir/RegPool.cpp.o
+
+
+CMakeFiles/calc.dir/Asembler.cpp.o: CMakeFiles/calc.dir/flags.make
+CMakeFiles/calc.dir/Asembler.cpp.o: Asembler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HookShare/Zach/homework/compiler/calc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/calc.dir/Asembler.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/calc.dir/Asembler.cpp.o -c /home/HookShare/Zach/homework/compiler/calc/Asembler.cpp
+
+CMakeFiles/calc.dir/Asembler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/calc.dir/Asembler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/HookShare/Zach/homework/compiler/calc/Asembler.cpp > CMakeFiles/calc.dir/Asembler.cpp.i
+
+CMakeFiles/calc.dir/Asembler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/calc.dir/Asembler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/HookShare/Zach/homework/compiler/calc/Asembler.cpp -o CMakeFiles/calc.dir/Asembler.cpp.s
+
+CMakeFiles/calc.dir/Asembler.cpp.o.requires:
+
+.PHONY : CMakeFiles/calc.dir/Asembler.cpp.o.requires
+
+CMakeFiles/calc.dir/Asembler.cpp.o.provides: CMakeFiles/calc.dir/Asembler.cpp.o.requires
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Asembler.cpp.o.provides.build
+.PHONY : CMakeFiles/calc.dir/Asembler.cpp.o.provides
+
+CMakeFiles/calc.dir/Asembler.cpp.o.provides.build: CMakeFiles/calc.dir/Asembler.cpp.o
+
+
+CMakeFiles/calc.dir/list.cpp.o: CMakeFiles/calc.dir/flags.make
+CMakeFiles/calc.dir/list.cpp.o: list.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HookShare/Zach/homework/compiler/calc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/calc.dir/list.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/calc.dir/list.cpp.o -c /home/HookShare/Zach/homework/compiler/calc/list.cpp
+
+CMakeFiles/calc.dir/list.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/calc.dir/list.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/HookShare/Zach/homework/compiler/calc/list.cpp > CMakeFiles/calc.dir/list.cpp.i
+
+CMakeFiles/calc.dir/list.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/calc.dir/list.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/HookShare/Zach/homework/compiler/calc/list.cpp -o CMakeFiles/calc.dir/list.cpp.s
+
+CMakeFiles/calc.dir/list.cpp.o.requires:
+
+.PHONY : CMakeFiles/calc.dir/list.cpp.o.requires
+
+CMakeFiles/calc.dir/list.cpp.o.provides: CMakeFiles/calc.dir/list.cpp.o.requires
+	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/list.cpp.o.provides.build
+.PHONY : CMakeFiles/calc.dir/list.cpp.o.provides
+
+CMakeFiles/calc.dir/list.cpp.o.provides.build: CMakeFiles/calc.dir/list.cpp.o
 
 
 CMakeFiles/calc.dir/parser.cpp.o: CMakeFiles/calc.dir/flags.make
@@ -338,12 +338,12 @@ calc_OBJECTS = \
 "CMakeFiles/calc.dir/main.cpp.o" \
 "CMakeFiles/calc.dir/Global.cpp.o" \
 "CMakeFiles/calc.dir/Expression.cpp.o" \
-"CMakeFiles/calc.dir/ArrayType.cpp.o" \
-"CMakeFiles/calc.dir/Operations.cpp.o" \
-"CMakeFiles/calc.dir/RecordType.cpp.o" \
-"CMakeFiles/calc.dir/SimpleType.cpp.o" \
-"CMakeFiles/calc.dir/SymbolTable.cpp.o" \
 "CMakeFiles/calc.dir/Type.cpp.o" \
+"CMakeFiles/calc.dir/Operations.cpp.o" \
+"CMakeFiles/calc.dir/SymbolTable.cpp.o" \
+"CMakeFiles/calc.dir/RegPool.cpp.o" \
+"CMakeFiles/calc.dir/Asembler.cpp.o" \
+"CMakeFiles/calc.dir/list.cpp.o" \
 "CMakeFiles/calc.dir/parser.cpp.o" \
 "CMakeFiles/calc.dir/scanner.cpp.o"
 
@@ -353,12 +353,12 @@ calc_EXTERNAL_OBJECTS =
 calc: CMakeFiles/calc.dir/main.cpp.o
 calc: CMakeFiles/calc.dir/Global.cpp.o
 calc: CMakeFiles/calc.dir/Expression.cpp.o
-calc: CMakeFiles/calc.dir/ArrayType.cpp.o
-calc: CMakeFiles/calc.dir/Operations.cpp.o
-calc: CMakeFiles/calc.dir/RecordType.cpp.o
-calc: CMakeFiles/calc.dir/SimpleType.cpp.o
-calc: CMakeFiles/calc.dir/SymbolTable.cpp.o
 calc: CMakeFiles/calc.dir/Type.cpp.o
+calc: CMakeFiles/calc.dir/Operations.cpp.o
+calc: CMakeFiles/calc.dir/SymbolTable.cpp.o
+calc: CMakeFiles/calc.dir/RegPool.cpp.o
+calc: CMakeFiles/calc.dir/Asembler.cpp.o
+calc: CMakeFiles/calc.dir/list.cpp.o
 calc: CMakeFiles/calc.dir/parser.cpp.o
 calc: CMakeFiles/calc.dir/scanner.cpp.o
 calc: CMakeFiles/calc.dir/build.make
@@ -375,12 +375,12 @@ CMakeFiles/calc.dir/build: calc
 CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/main.cpp.o.requires
 CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/Global.cpp.o.requires
 CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/Expression.cpp.o.requires
-CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/ArrayType.cpp.o.requires
-CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/Operations.cpp.o.requires
-CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/RecordType.cpp.o.requires
-CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/SimpleType.cpp.o.requires
-CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/SymbolTable.cpp.o.requires
 CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/Type.cpp.o.requires
+CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/Operations.cpp.o.requires
+CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/SymbolTable.cpp.o.requires
+CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/RegPool.cpp.o.requires
+CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/Asembler.cpp.o.requires
+CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/list.cpp.o.requires
 CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/parser.cpp.o.requires
 CMakeFiles/calc.dir/requires: CMakeFiles/calc.dir/scanner.cpp.o.requires
 

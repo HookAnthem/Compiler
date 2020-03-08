@@ -14,19 +14,13 @@ class Expression {
 		Expression(int x, Type * t);
 		~Expression();
 };
-Expression * Apply(Expression * a, Expression * b, std::string op, std::string mode);
-
-void CheckExpression(Expression * a, Expression * b);
-
-void Binop(std::string op, std::string d, std::string a, std::string b);
-
-void BinopLo(std::string op, std::string d, std::string a, std::string b);
-
-void BinopHi(std::string op, std::string d, std::string a, std::string b);
-
-void Unop(std::string op, std::string d, std::string a);
-
-std::string LoadExpression(Expression * a);
+Expression * Apply(Expression * one, Expression * two, std::string operation, std::string type);
+void CheckExpression(Expression * one, Expression * two);
+void Binary(std::string operation, std::string destReg, std::string reg1, std::string reg2);
+void BinaryLo(std::string operation, std::string destReg, std::string reg1, std::string reg2);
+void BinaryHi(std::string operation, std::string destReg, std::string reg1, std::string reg2);
+void Unary(std::string operation, std::string destReg, std::string reg1);
+std::string LoadExpression(Expression * one);
 Expression * add(Expression * one, Expression * two);
 Expression * sub(Expression * one, Expression * two);
 Expression * mult(Expression * one, Expression * two);
@@ -40,12 +34,6 @@ Expression * leg(Expression * one, Expression * two);
 Expression * grteq(Expression * one, Expression * two);
 Expression * les(Expression * one, Expression * two);
 Expression * grt(Expression * one, Expression * two);
-
 Expression * ArrayAccess(Expression *, Expression*);
-
-
-
-
-
-
+Expression * Lvalue(std::string id);
 

@@ -133,7 +133,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=calc
+CMAKE_PROJECT_NAME:STATIC=cpslCompiler
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -198,6 +198,12 @@ calc_BINARY_DIR:STATIC=/home/HookShare/Zach/homework/compiler/calc
 
 //Value Computed by CMake
 calc_SOURCE_DIR:STATIC=/home/HookShare/Zach/homework/compiler/calc
+
+//Value Computed by CMake
+cpslCompiler_BINARY_DIR:STATIC=/home/HookShare/Zach/homework/compiler/calc
+
+//Value Computed by CMake
+cpslCompiler_SOURCE_DIR:STATIC=/home/HookShare/Zach/homework/compiler/calc
 
 
 ########################

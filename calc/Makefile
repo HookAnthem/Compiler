@@ -111,44 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named calc
+# Target rules for targets named cpslCompiler
 
 # Build rule for target.
-calc: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 calc
-.PHONY : calc
+cpslCompiler: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cpslCompiler
+.PHONY : cpslCompiler
 
 # fast build rule for target.
-calc/fast:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/build
-.PHONY : calc/fast
+cpslCompiler/fast:
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/build
+.PHONY : cpslCompiler/fast
 
-ArrayType.o: ArrayType.cpp.o
+Asembler.o: Asembler.cpp.o
 
-.PHONY : ArrayType.o
+.PHONY : Asembler.o
 
 # target to build an object file
-ArrayType.cpp.o:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/ArrayType.cpp.o
-.PHONY : ArrayType.cpp.o
+Asembler.cpp.o:
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Asembler.cpp.o
+.PHONY : Asembler.cpp.o
 
-ArrayType.i: ArrayType.cpp.i
+Asembler.i: Asembler.cpp.i
 
-.PHONY : ArrayType.i
+.PHONY : Asembler.i
 
 # target to preprocess a source file
-ArrayType.cpp.i:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/ArrayType.cpp.i
-.PHONY : ArrayType.cpp.i
+Asembler.cpp.i:
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Asembler.cpp.i
+.PHONY : Asembler.cpp.i
 
-ArrayType.s: ArrayType.cpp.s
+Asembler.s: Asembler.cpp.s
 
-.PHONY : ArrayType.s
+.PHONY : Asembler.s
 
 # target to generate assembly for a file
-ArrayType.cpp.s:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/ArrayType.cpp.s
-.PHONY : ArrayType.cpp.s
+Asembler.cpp.s:
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Asembler.cpp.s
+.PHONY : Asembler.cpp.s
 
 Expression.o: Expression.cpp.o
 
@@ -156,7 +156,7 @@ Expression.o: Expression.cpp.o
 
 # target to build an object file
 Expression.cpp.o:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Expression.cpp.o
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Expression.cpp.o
 .PHONY : Expression.cpp.o
 
 Expression.i: Expression.cpp.i
@@ -165,7 +165,7 @@ Expression.i: Expression.cpp.i
 
 # target to preprocess a source file
 Expression.cpp.i:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Expression.cpp.i
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Expression.cpp.i
 .PHONY : Expression.cpp.i
 
 Expression.s: Expression.cpp.s
@@ -174,7 +174,7 @@ Expression.s: Expression.cpp.s
 
 # target to generate assembly for a file
 Expression.cpp.s:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Expression.cpp.s
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Expression.cpp.s
 .PHONY : Expression.cpp.s
 
 Global.o: Global.cpp.o
@@ -183,7 +183,7 @@ Global.o: Global.cpp.o
 
 # target to build an object file
 Global.cpp.o:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Global.cpp.o
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Global.cpp.o
 .PHONY : Global.cpp.o
 
 Global.i: Global.cpp.i
@@ -192,7 +192,7 @@ Global.i: Global.cpp.i
 
 # target to preprocess a source file
 Global.cpp.i:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Global.cpp.i
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Global.cpp.i
 .PHONY : Global.cpp.i
 
 Global.s: Global.cpp.s
@@ -201,7 +201,7 @@ Global.s: Global.cpp.s
 
 # target to generate assembly for a file
 Global.cpp.s:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Global.cpp.s
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Global.cpp.s
 .PHONY : Global.cpp.s
 
 Operations.o: Operations.cpp.o
@@ -210,7 +210,7 @@ Operations.o: Operations.cpp.o
 
 # target to build an object file
 Operations.cpp.o:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Operations.cpp.o
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Operations.cpp.o
 .PHONY : Operations.cpp.o
 
 Operations.i: Operations.cpp.i
@@ -219,7 +219,7 @@ Operations.i: Operations.cpp.i
 
 # target to preprocess a source file
 Operations.cpp.i:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Operations.cpp.i
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Operations.cpp.i
 .PHONY : Operations.cpp.i
 
 Operations.s: Operations.cpp.s
@@ -228,62 +228,35 @@ Operations.s: Operations.cpp.s
 
 # target to generate assembly for a file
 Operations.cpp.s:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Operations.cpp.s
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Operations.cpp.s
 .PHONY : Operations.cpp.s
 
-RecordType.o: RecordType.cpp.o
+RegPool.o: RegPool.cpp.o
 
-.PHONY : RecordType.o
-
-# target to build an object file
-RecordType.cpp.o:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/RecordType.cpp.o
-.PHONY : RecordType.cpp.o
-
-RecordType.i: RecordType.cpp.i
-
-.PHONY : RecordType.i
-
-# target to preprocess a source file
-RecordType.cpp.i:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/RecordType.cpp.i
-.PHONY : RecordType.cpp.i
-
-RecordType.s: RecordType.cpp.s
-
-.PHONY : RecordType.s
-
-# target to generate assembly for a file
-RecordType.cpp.s:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/RecordType.cpp.s
-.PHONY : RecordType.cpp.s
-
-SimpleType.o: SimpleType.cpp.o
-
-.PHONY : SimpleType.o
+.PHONY : RegPool.o
 
 # target to build an object file
-SimpleType.cpp.o:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/SimpleType.cpp.o
-.PHONY : SimpleType.cpp.o
+RegPool.cpp.o:
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/RegPool.cpp.o
+.PHONY : RegPool.cpp.o
 
-SimpleType.i: SimpleType.cpp.i
+RegPool.i: RegPool.cpp.i
 
-.PHONY : SimpleType.i
+.PHONY : RegPool.i
 
 # target to preprocess a source file
-SimpleType.cpp.i:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/SimpleType.cpp.i
-.PHONY : SimpleType.cpp.i
+RegPool.cpp.i:
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/RegPool.cpp.i
+.PHONY : RegPool.cpp.i
 
-SimpleType.s: SimpleType.cpp.s
+RegPool.s: RegPool.cpp.s
 
-.PHONY : SimpleType.s
+.PHONY : RegPool.s
 
 # target to generate assembly for a file
-SimpleType.cpp.s:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/SimpleType.cpp.s
-.PHONY : SimpleType.cpp.s
+RegPool.cpp.s:
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/RegPool.cpp.s
+.PHONY : RegPool.cpp.s
 
 SymbolTable.o: SymbolTable.cpp.o
 
@@ -291,7 +264,7 @@ SymbolTable.o: SymbolTable.cpp.o
 
 # target to build an object file
 SymbolTable.cpp.o:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/SymbolTable.cpp.o
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/SymbolTable.cpp.o
 .PHONY : SymbolTable.cpp.o
 
 SymbolTable.i: SymbolTable.cpp.i
@@ -300,7 +273,7 @@ SymbolTable.i: SymbolTable.cpp.i
 
 # target to preprocess a source file
 SymbolTable.cpp.i:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/SymbolTable.cpp.i
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/SymbolTable.cpp.i
 .PHONY : SymbolTable.cpp.i
 
 SymbolTable.s: SymbolTable.cpp.s
@@ -309,7 +282,7 @@ SymbolTable.s: SymbolTable.cpp.s
 
 # target to generate assembly for a file
 SymbolTable.cpp.s:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/SymbolTable.cpp.s
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/SymbolTable.cpp.s
 .PHONY : SymbolTable.cpp.s
 
 Type.o: Type.cpp.o
@@ -318,7 +291,7 @@ Type.o: Type.cpp.o
 
 # target to build an object file
 Type.cpp.o:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Type.cpp.o
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Type.cpp.o
 .PHONY : Type.cpp.o
 
 Type.i: Type.cpp.i
@@ -327,7 +300,7 @@ Type.i: Type.cpp.i
 
 # target to preprocess a source file
 Type.cpp.i:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Type.cpp.i
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Type.cpp.i
 .PHONY : Type.cpp.i
 
 Type.s: Type.cpp.s
@@ -336,8 +309,35 @@ Type.s: Type.cpp.s
 
 # target to generate assembly for a file
 Type.cpp.s:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/Type.cpp.s
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Type.cpp.s
 .PHONY : Type.cpp.s
+
+list.o: list.cpp.o
+
+.PHONY : list.o
+
+# target to build an object file
+list.cpp.o:
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/list.cpp.o
+.PHONY : list.cpp.o
+
+list.i: list.cpp.i
+
+.PHONY : list.i
+
+# target to preprocess a source file
+list.cpp.i:
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/list.cpp.i
+.PHONY : list.cpp.i
+
+list.s: list.cpp.s
+
+.PHONY : list.s
+
+# target to generate assembly for a file
+list.cpp.s:
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/list.cpp.s
+.PHONY : list.cpp.s
 
 main.o: main.cpp.o
 
@@ -345,7 +345,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -354,7 +354,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -363,7 +363,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 parser.o: parser.cpp.o
@@ -372,7 +372,7 @@ parser.o: parser.cpp.o
 
 # target to build an object file
 parser.cpp.o:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/parser.cpp.o
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/parser.cpp.o
 .PHONY : parser.cpp.o
 
 parser.i: parser.cpp.i
@@ -381,7 +381,7 @@ parser.i: parser.cpp.i
 
 # target to preprocess a source file
 parser.cpp.i:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/parser.cpp.i
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/parser.cpp.i
 .PHONY : parser.cpp.i
 
 parser.s: parser.cpp.s
@@ -390,7 +390,7 @@ parser.s: parser.cpp.s
 
 # target to generate assembly for a file
 parser.cpp.s:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/parser.cpp.s
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/parser.cpp.s
 .PHONY : parser.cpp.s
 
 scanner.o: scanner.cpp.o
@@ -399,7 +399,7 @@ scanner.o: scanner.cpp.o
 
 # target to build an object file
 scanner.cpp.o:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/scanner.cpp.o
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/scanner.cpp.o
 .PHONY : scanner.cpp.o
 
 scanner.i: scanner.cpp.i
@@ -408,7 +408,7 @@ scanner.i: scanner.cpp.i
 
 # target to preprocess a source file
 scanner.cpp.i:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/scanner.cpp.i
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/scanner.cpp.i
 .PHONY : scanner.cpp.i
 
 scanner.s: scanner.cpp.s
@@ -417,7 +417,7 @@ scanner.s: scanner.cpp.s
 
 # target to generate assembly for a file
 scanner.cpp.s:
-	$(MAKE) -f CMakeFiles/calc.dir/build.make CMakeFiles/calc.dir/scanner.cpp.s
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/scanner.cpp.s
 .PHONY : scanner.cpp.s
 
 # Help Target
@@ -427,11 +427,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... calc"
+	@echo "... cpslCompiler"
 	@echo "... edit_cache"
-	@echo "... ArrayType.o"
-	@echo "... ArrayType.i"
-	@echo "... ArrayType.s"
+	@echo "... Asembler.o"
+	@echo "... Asembler.i"
+	@echo "... Asembler.s"
 	@echo "... Expression.o"
 	@echo "... Expression.i"
 	@echo "... Expression.s"
@@ -441,18 +441,18 @@ help:
 	@echo "... Operations.o"
 	@echo "... Operations.i"
 	@echo "... Operations.s"
-	@echo "... RecordType.o"
-	@echo "... RecordType.i"
-	@echo "... RecordType.s"
-	@echo "... SimpleType.o"
-	@echo "... SimpleType.i"
-	@echo "... SimpleType.s"
+	@echo "... RegPool.o"
+	@echo "... RegPool.i"
+	@echo "... RegPool.s"
 	@echo "... SymbolTable.o"
 	@echo "... SymbolTable.i"
 	@echo "... SymbolTable.s"
 	@echo "... Type.o"
 	@echo "... Type.i"
 	@echo "... Type.s"
+	@echo "... list.o"
+	@echo "... list.i"
+	@echo "... list.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

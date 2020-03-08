@@ -1,6 +1,4 @@
 #include "Expression.hpp"
-
-
 Expression::Expression(std::string memLoc, Type * t)
 {
     this->memLoc = memLoc; 
@@ -13,52 +11,77 @@ Expression::Expression(int x, Type * t)
     this->type = t; 
     this->is_const = true;
 }
+
+void CheckExpression(Expression * one, Expression * two){
+	if(!one || !two){ 
+		std::cout << "Error: nullptr during expression apply." << std::endl;
+        }
+        if(one->type != two->type) { // Type error
+		std::cout << "Error: Type error during expression apply." <<std::endl;
+        }
+	
+}
 std::string LoadExpression(Expression * one)
 {
     if(one->is_const)
     {
+	std::string reg = REG_POOL.GetReg();
+	FOUT.Write(std::string("li " + reg + ", " + std::to_string(one->value)));
+	return reg;
     }
     else if(one->has_add)
     {
+	return LoadVar(one->memLoc);
     }
     else
     {
+	return one->memLoc;
     }
 }
-void Binop(std::string op, std::string d, std::string a, std::string b) {
+void Binary(std::string operation, std::string destReg, std::string reg1, std::string reg2) {
 	// op = operator, d = destination register, a = reg1, b = reg2
-	FOUT.Write(std::string(op + " " + d + "," + a + "," + b + " # Binop"));
+	FOUT.Write(std::string(operation + " " + destReg + "," + reg1 + "," + reg2));
 }
 
-void BinopLo(std::string op, std::string d, std::string a, std::string b){
-	FOUT.Write(std::string(op + " " + a + "," + b));
-	FOUT.Write(std::string("mflo " + d));
+void BinaryLo(std::string operation, std::string destReg, std::string reg1, std::string reg2){
+	FOUT.Write(std::string(operation + " " + reg1 + "," + reg2));
+	FOUT.Write(std::string("mflo " + destReg));
 }
 
-void BinopHi(std::string op, std::string d, std::string a, std::string b){
-        FOUT.Write(std::string(op + " " + a + "," + b));
-        FOUT.Write(std::string("mfhi " + d));
+void BinaryHi(std::string operation, std::string destReg, std::string reg1, std::string reg2){
+        FOUT.Write(std::string(operation + " " + reg1 + "," + reg2));
+        FOUT.Write(std::string("mfhi " + destReg));
 }
 
-void Unop(std::string op, std::string d, std::string a){
-	FOUT.Write(std::string(op + " " + d + "," + a + "# Unop"));
-	if(op == "not"){
-		FOUT.Write(std::string("sltu " + d + ", $zero, " + a));
-		FOUT.Write(std::string("xori " + d + "," + d + ",1"));
+void Unary(std::string operation, std::string destReg, std::string reg1){
+	FOUT.Write(std::string(operation + " " + destReg + "," + reg1));
+	if(operation == "not"){
+		FOUT.Write(std::string("sltu " + destReg + ", $zero, " + reg1));
+		FOUT.Write(std::string("xori " + destReg + "," + reg1 + ",1"));
 	}
 }
 
-Expression * Apply(Expression * a, Expression * b, std::string op, std::string mode){
-	std::string reg1 = LoadExpression(a);
-	std::string reg2 = LoadExpression(b);
-
-	if(mode == "binop") Binop(op, reg1, reg1, reg2);
-	else if(mode == "hi") BinopHi(op, reg1, reg1, reg2);
-	else if(mode == "lo") BinopLo(op, reg1, reg1, reg2);
-	else if(mode == "unop") Unop(op, reg1, reg2);
-
-	REGISTER_POOL.ReleaseRegister(reg2);
-	return new Expression(reg1, a->type);
+Expression * Apply(Expression * one, Expression * two, std::string operation, std::string type){
+	std::string reg1 = LoadExpression(one);
+	std::string reg2 = LoadExpression(two);
+	if(type == "binar")
+	{
+	    Binary(operation, reg1, reg1, reg2);
+	}
+	if(type == "hi")
+	{
+	    BinaryHi(operation, reg1, reg1, reg2);
+	}
+	if(type == "lo")
+	{
+	    BinaryLo(operation, reg1, reg1, reg2);
+	}
+	if(type == "un")
+	{
+	    Unary(operation, reg1, reg2);
+	}
+	REG_POOL.ReleaseReg(reg2);
+	return new Expression(reg1, one->type);
 }
 Expression * Lvalue(std::string id)
 {
@@ -72,7 +95,7 @@ Expression * add(Expression * one, Expression * two)
     }
     else
     {
-	    Apply(one, two, "add", "binop");
+	    Apply(one, two, "add", "binar");
     }
 }
 Expression * sub(Expression * one, Expression * two)
@@ -83,7 +106,7 @@ Expression * sub(Expression * one, Expression * two)
     }
     else
     {
-	    Apply(one, two, "sub", "binop");
+	    Apply(one, two, "sub", "binar");
     }
 }
 Expression * mult(Expression * one, Expression * two)
@@ -127,7 +150,7 @@ Expression * And(Expression * one, Expression * two)
     }
     else
     {
-	    Apply(one, two, "and", "binop");
+	    Apply(one, two, "and", "binar");
     }
 }
 Expression * equal(Expression * one, Expression * two)
@@ -138,7 +161,7 @@ Expression * equal(Expression * one, Expression * two)
     }
     else
     {
-	    Apply(one, two, "seq", "binop");
+	    Apply(one, two, "seq", "binar");
     }
 }
 Expression * Or(Expression * one, Expression * two)
@@ -149,7 +172,7 @@ Expression * Or(Expression * one, Expression * two)
     }
     else
     {
-	    Apply(one, two, "or", "binop");
+	    Apply(one, two, "or", "binar");
     }
 }
 Expression * neg(Expression * one, Expression * two)
@@ -160,7 +183,7 @@ Expression * neg(Expression * one, Expression * two)
     }
     else
     {
-	    Apply(one, two, "sne", "binop");
+	    Apply(one, two, "sne", "binar");
     }
 }
 Expression * leg(Expression * one, Expression * two)
@@ -171,7 +194,7 @@ Expression * leg(Expression * one, Expression * two)
     }
     else
     {
-	    Apply(one, two, "sle", "binop");
+	    Apply(one, two, "sle", "binar");
     }
 }
 Expression * grteq(Expression * one, Expression * two)
@@ -182,7 +205,7 @@ Expression * grteq(Expression * one, Expression * two)
     }
     else
     {
-	    Apply(one, two, "sge", "binop");
+	    Apply(one, two, "sge", "binar");
     }
 }
 Expression * les(Expression * one, Expression * two)
@@ -193,7 +216,7 @@ Expression * les(Expression * one, Expression * two)
     }
     else
     {
-	    Apply(one, two, "slt", "binop");
+	    Apply(one, two, "slt", "binar");
     }
 }
 Expression * grt(Expression * one, Expression * two)
@@ -204,10 +227,6 @@ Expression * grt(Expression * one, Expression * two)
     }
     else
     {
-	    Apply(one, two, "sgt", "binop");
+	    Apply(one, two, "sgt", "binar");
     }
 }
-
-
-
-

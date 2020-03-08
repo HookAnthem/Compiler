@@ -1933,13 +1933,13 @@ yyreduce:
 
   case 68:
 #line 206 "parser.y" /* yacc.c:1646  */
-    {Write((yyvsp[0].e));}
+    {}
 #line 1938 "/home/HookShare/Zach/homework/compiler/calc/parser.cpp" /* yacc.c:1646  */
     break;
 
   case 69:
 #line 207 "parser.y" /* yacc.c:1646  */
-    {Write((yyvsp[0].e));}
+    {}
 #line 1944 "/home/HookShare/Zach/homework/compiler/calc/parser.cpp" /* yacc.c:1646  */
     break;
 

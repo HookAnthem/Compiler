@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(calc)
+project(cpslCompiler)
 
 find_package(BISON)
 find_package(FLEX)
@@ -14,36 +14,36 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
 set(HEADER_HPP
 	Global.hpp
 	Expression.hpp
-	ArrayType.hpp
-	Operations.hpp
-	RecordType.hpp
-	SimpleType.hpp
-	SymbolTable.hpp
 	Type.hpp
+	Operations.hpp
+	SymbolTable.hpp
+	RegPool.hpp
+	Asembler.hpp
+	list.hpp 
 	)
 
 set(SOURCE_CPP
 	Global.cpp
 	Expression.cpp
-	ArrayType.cpp
-	Operations.cpp
-	RecordType.cpp
-	SimpleType.cpp
-	SymbolTable.cpp
 	Type.cpp
+	Operations.cpp
+	SymbolTable.cpp
+	RegPool.cpp
+	Asembler.cpp
+	list.cpp
 	)
 
 
-set(calc_srcs
+set(cpsl_srcs
   main.cpp               
   ${HEADER_HPP}
   ${SOURCE_CPP}
   ${BISON_Parser_OUTPUTS}
   ${FLEX_Scanner_OUTPUTS}
 )
-source_group("Calc" FILES ${calc_srcs})
+source_group("Cpsl" FILES ${cpsl_srcs})
 
-add_executable(calc ${calc_srcs})
-target_link_libraries(calc ${FLEX_LIBRARIES} ${BISON_LIBRARIES})
-target_include_directories(calc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+add_executable(cpslCompiler ${cpsl_srcs})
+target_link_libraries(cpslCompiler ${FLEX_LIBRARIES} ${BISON_LIBRARIES})
+target_include_directories(cpslCompiler PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 

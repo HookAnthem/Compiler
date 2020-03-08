@@ -3,8 +3,7 @@
 
 #include "Global.hpp"
 class Expression;
-class Type; 
-
+class Type;
 class SymbolTable
 {
   public:
