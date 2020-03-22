@@ -194,12 +194,6 @@ FLEX_INCLUDE_DIR:PATH=/usr/include
 FL_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libfl.so
 
 //Value Computed by CMake
-calc_BINARY_DIR:STATIC=/home/HookShare/Zach/homework/compiler/calc
-
-//Value Computed by CMake
-calc_SOURCE_DIR:STATIC=/home/HookShare/Zach/homework/compiler/calc
-
-//Value Computed by CMake
 cpslCompiler_BINARY_DIR:STATIC=/home/HookShare/Zach/homework/compiler/calc
 
 //Value Computed by CMake

@@ -1,10 +1,17 @@
 #include "Global.hpp"
 extern int yyparse();
-int main()
+extern FILE *yyin;
+int main(int argc, char *argv[])
 {
   //symbol_table.enter_scope();
-   FOUT.WriteHead();
    SYMBOL_TABLE.init();
-   yyparse();
+   if(argc > 1)
+   {
+     auto file = std::fopen(argv[1], "r");
+     yyin = file;
+   }
+   FOUT.WriteHead();
+      yyparse();
+   
    FOUT.WriteFoot();
 };

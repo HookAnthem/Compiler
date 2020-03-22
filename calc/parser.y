@@ -5,6 +5,7 @@
 #include "Expression.hpp"
 #include "Type.hpp"
 #include "SymbolTable.hpp"
+#include "Writing.hpp"
 #include "Global.hpp"
 extern int yylex();
 void yyerror(const char*);
@@ -15,6 +16,7 @@ void yyerror(const char*);
 int val;
 char* chr;
 char* string;
+char char_spec;
 Expression* e;
 char* id;
 Type* t;
@@ -81,9 +83,6 @@ std::vector<std::string>* typeList;
 %token  CLOSEBRAC
 %token  ASSIGN
 
-%token  NL
-%token  CR
-
 %token  DOT
 %token  IDENTIFIER 
 %token  CHARACTERCONST
@@ -107,8 +106,8 @@ std::vector<std::string>* typeList;
 %type <t> RecordType
 %type <typeList> TypeListOpt
 %type <t> IdentList
-
-
+%type <val> Block
+%type <val> Body
 
 %%
 Program              : OptConstDecl OptTypeDecl OptVarDecl ProFunkDecl Block DOT { YYACCEPT; }
@@ -149,7 +148,7 @@ Block                : BEG StatementSequence END {}
 TypeDecl             : TYPE IDENTIFIER EQUAL Type DONE TypeDeclList {SYMBOL_TABLE.Store(std::string($2),$4);}  
 	             ;
 TypeDeclList         : %empty {}
-	             | IDENTIFIER EQUAL Type DONE TypeDeclList {}
+	             | IDENTIFIER EQUAL Type DONE TypeDeclList {SYMBOL_TABLE.Store(std::string($1),$3);}
 		     ;
 Type                 : SimpleType {} 
                      | RecordType {}
@@ -164,7 +163,7 @@ ArrayType            : ARRAY OPENBRAC Expression SUCHTHAT Expression CLOSEBRAC O
 TypeListOpt          : %empty {}
 		     | IdentList SUCHTHAT Type DONE TypeListOpt {/*$$ = new RecordType($1,$3)*/} 
 		     ;
-IdentList            : IDENTIFIER {/* $$ = new std::vector<std::string>(1, std::string($1))*/}
+IdentList            : IDENTIFIER {/*$$ = new std::vector<std::string>(1, std::string($1))*/}
 		     | IDENTIFIER COM IdentList {/* $1->push_back($3)*/ }
 		     ;
 VarDecl              : VAR IdentList SUCHTHAT Type DONE OptVarDecl {} 
@@ -212,8 +211,8 @@ ReadStatementInner   : LValue COM LValue {}
 		     ;
 WriteStatement       : WRITE OPEN WriteInnerStatement CLOSE 
 		     ;
-WriteInnerStatement  : WriteInnerStatement COM Expression {/*WriteFunction($3)*/}
-		     | Expression {/*WriteFunction($1)*/}
+WriteInnerStatement  : WriteInnerStatement COM Expression { writeFunc($3);}
+		     | Expression { writeFunc($1);}
 		     ;
 ProcedureCall        : IDENTIFIER OPEN CLOSE {}
 		     | IDENTIFIER OPEN ProcedureCallInner CLOSE {}
@@ -249,7 +248,7 @@ Expression           : Expression OR Expression {$$ = Or($1,$3);}
 		     | PRED OPEN Expression CLOSE {} 
 		     | SUCC OPEN Expression CLOSE {} 
 		     | LValue { $$ = $1;}
-		     | STRINGCONST { $$ = new Expression(STRING_LIST.storage(std::string($1)), &TYPE_STR);}
+		     | STRINGCONST {/*std::cout << "THERE IS A STRING" << std::endl;*/ $$ = new Expression(STRING_LIST.storage(std::string($1)), &TYPE_STR);}
 		     | NUMBER {$$ = new Expression($1, &TYPE_INT);}
 		     | OCTAL {$$ = new Expression($1, &TYPE_INT);}
 		     | HEXADECIMAL {$$ = new Expression($1, &TYPE_INT);}

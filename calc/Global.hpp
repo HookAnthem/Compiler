@@ -19,7 +19,7 @@
 #include "Asembler.hpp"
 #include "list.hpp"
 #include "Type.hpp"
-
+#include "Writing.hpp"
 class Type;
 class Expression;
 class SymbolTable;
@@ -41,3 +41,4 @@ extern SimpleType TYPE_BOOL;
 extern SimpleType TYPE_STR;
 extern Expression EXPR_TRUE;
 extern Expression EXPR_FALSE;
+extern const bool printDebug;

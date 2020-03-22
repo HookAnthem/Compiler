@@ -19,6 +19,7 @@ set(HEADER_HPP
 	SymbolTable.hpp
 	RegPool.hpp
 	Asembler.hpp
+	Writing.hpp
 	list.hpp 
 	)
 
@@ -30,6 +31,7 @@ set(SOURCE_CPP
 	SymbolTable.cpp
 	RegPool.cpp
 	Asembler.cpp
+	Writing.cpp
 	list.cpp
 	)
 

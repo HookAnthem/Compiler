@@ -47,11 +47,12 @@ extern int yydebug;
 #include "Expression.hpp"
 #include "Type.hpp"
 #include "SymbolTable.hpp"
+#include "Writing.hpp"
 #include "Global.hpp"
 extern int yylex();
 void yyerror(const char*);
 
-#line 55 "/home/HookShare/Zach/homework/compiler/calc/parser.hpp" /* yacc.c:1909  */
+#line 56 "/home/HookShare/Zach/homework/compiler/calc/parser.hpp" /* yacc.c:1909  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -112,15 +113,13 @@ void yyerror(const char*);
     OPENBRAC = 309,
     CLOSEBRAC = 310,
     ASSIGN = 311,
-    NL = 312,
-    CR = 313,
-    DOT = 314,
-    IDENTIFIER = 315,
-    CHARACTERCONST = 316,
-    STRINGCONST = 317,
-    OCTAL = 318,
-    HEXADECIMAL = 319,
-    NUMBER = 320
+    DOT = 312,
+    IDENTIFIER = 313,
+    CHARACTERCONST = 314,
+    STRINGCONST = 315,
+    OCTAL = 316,
+    HEXADECIMAL = 317,
+    NUMBER = 318
   };
 #endif
 
@@ -129,11 +128,12 @@ void yyerror(const char*);
 
 union YYSTYPE
 {
-#line 14 "parser.y" /* yacc.c:1909  */
+#line 15 "parser.y" /* yacc.c:1909  */
 
 int val;
 char* chr;
 char* string;
+char char_spec;
 Expression* e;
 char* id;
 Type* t;

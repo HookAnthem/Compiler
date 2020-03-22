@@ -312,6 +312,33 @@ Type.cpp.s:
 	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Type.cpp.s
 .PHONY : Type.cpp.s
 
+Writing.o: Writing.cpp.o
+
+.PHONY : Writing.o
+
+# target to build an object file
+Writing.cpp.o:
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Writing.cpp.o
+.PHONY : Writing.cpp.o
+
+Writing.i: Writing.cpp.i
+
+.PHONY : Writing.i
+
+# target to preprocess a source file
+Writing.cpp.i:
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Writing.cpp.i
+.PHONY : Writing.cpp.i
+
+Writing.s: Writing.cpp.s
+
+.PHONY : Writing.s
+
+# target to generate assembly for a file
+Writing.cpp.s:
+	$(MAKE) -f CMakeFiles/cpslCompiler.dir/build.make CMakeFiles/cpslCompiler.dir/Writing.cpp.s
+.PHONY : Writing.cpp.s
+
 list.o: list.cpp.o
 
 .PHONY : list.o
@@ -450,6 +477,9 @@ help:
 	@echo "... Type.o"
 	@echo "... Type.i"
 	@echo "... Type.s"
+	@echo "... Writing.o"
+	@echo "... Writing.i"
+	@echo "... Writing.s"
 	@echo "... list.o"
 	@echo "... list.i"
 	@echo "... list.s"

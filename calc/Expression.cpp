@@ -45,7 +45,6 @@ std::string LoadExpression(Expression * one)
     }
 }
 void Binary(std::string operation, std::string destReg, std::string reg1, std::string reg2) {
-	// op = operator, d = destination register, a = reg1, b = reg2
 	FOUT.Write(std::string(operation + " " + destReg + "," + reg1 + "," + reg2));
 }
 

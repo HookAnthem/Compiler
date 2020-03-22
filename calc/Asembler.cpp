@@ -23,6 +23,7 @@ void Asembler::WriteHead()
     Write(".globl main");
     Write("main:");
     Write("j GA");
+    WriteGlobal();
 }
 void Asembler::WriteFoot()
 {
